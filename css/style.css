@@ -1,0 +1,284 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    max-width: 100%;
+}
+
+/* --------- Body --------- */
+body {
+    font-family: "Roboto", "Open Sans", sans-serif;
+    color: #333;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* --------- Skip to Main Content --------- */
+a[href="#maincontent"] {
+    position: absolute;
+    top: 10px;
+    left: -9999px;
+    background-color: #ffcb05;
+    color: #00274c;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+a[href="#maincontent"]:focus {
+    left: 10px;
+}
+
+/* --------- Header --------- */
+header {
+    background-color: #00274c;
+    color: white;
+    text-align: center;
+    /* reduced banner padding so it uses less vertical space */
+    padding: 0.9rem 1rem 1.2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+/* Ensure any headings inside the dark header/banner are high-contrast (white) */
+header h1,
+header h2,
+header h3 {
+    color: #ffffff !important;
+}
+
+.logo,
+header img {
+    width: 100px;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+/* --------- Navigation --------- */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 420px;
+    justify-content: center;
+}
+
+nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffcb05;
+    color: #00274c;
+    text-decoration: none;
+    padding: 0.65rem 0.6rem;
+    font-weight: 600;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    transition: transform 0.16s ease-in-out, box-shadow 0.16s ease-in-out;
+    text-align: center;
+    min-height: 56px;
+    width: 100%;
+}
+
+nav a:hover,
+nav a:focus {
+    background-color: #f3c000;
+    transform: translateY(-2px);
+}
+
+nav a.active {
+    background-color: #00274c;
+    color: #fff;
+    border: 2px solid #ffcb05;
+}
+
+/* Mobile tweaks: keep banner small and buttons compact on narrow viewports */
+@media (max-width: 520px) {
+    header { padding: 0.8rem 0.8rem 1rem; }
+    .logo, header img { width: 92px; }
+    nav ul { gap: 10px; max-width: 360px; grid-template-columns: repeat(2, 1fr); }
+    nav a { min-height: 52px; padding: 0.6rem 0.5rem; font-size: 1rem; border-radius: 10px; }
+}
+
+/* --------- Main Layout --------- */
+main {
+    flex: 1;
+    display: grid;
+    gap: 1.5rem;
+    padding: 1.2rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --------- Sections --------- */
+section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* --------- Headings --------- */
+h1,
+h2,
+h3 {
+    color: #00274c;
+    line-height: 1.3;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+    border-left: 6px solid #ffcb05;
+    padding-left: 10px;
+}
+
+h3 {
+    font-size: 1.1rem;
+}
+
+/* --------- Text & Links --------- */
+p,
+li {
+    font-size: 1rem;
+}
+
+/* ========== Lists: make bullets and numbers align and look tidy ========== */
+/* Apply inside main content and section/card containers */
+main ol,
+main ul,
+section ol,
+section ul,
+.card ol,
+.card ul {
+    margin: 0.6rem 0 0.8rem 0;
+    padding-left: 1.4rem; /* consistent indent for bullets/numbers */
+    list-style-position: outside;
+}
+
+main ol li,
+main ul li,
+section ol li,
+section ul li,
+.card li {
+    margin: 0.45rem 0; /* vertical spacing between items */
+}
+
+/* Make ordered list numbers align nicely (hanging) */
+ol { counter-reset: item; }
+ol li { display: block; }
+
+/* Improve nested lists spacing */
+ol ol, ul ul, ol ul, ul ol { padding-left: 1.1rem; margin-top: 0.35rem; }
+
+/* Minor typographic tweak for inline links inside lists */
+li a { text-decoration: underline; }
+
+a {
+    color: #00274c;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #ffcb05;
+}
+
+/* --------- Figures & Images --------- */
+figure {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+/* Keep figure images consistent across pages */
+figure img{ max-width:720px; width:100%; }
+
+figcaption {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.4rem;
+}
+
+/* --------- Footer --------- */
+footer {
+    background-color: #00274c;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.25);
+    margin-top: auto;
+}
+
+footer a {
+    color: #ffcb05;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-x: auto;
+    background: #f7f7f7;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    margin: 0.5rem 0 0;
+}
+
+/* --------- Accessibility / Reduced Motion --------- */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
