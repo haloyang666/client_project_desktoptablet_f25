@@ -8,8 +8,30 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll("nav a");
+
+    navLinks.forEach(link => {
+      const linkPage = link.getAttribute("href");
+      if (linkPage === currentPage) {
+        link.style.backgroundColor = "#FFCB05";
+        link.style.color = "#00274C";
+        link.style.fontWeight = "700";
+        link.style.boxShadow = "0 0 8px rgba(0,0,0,0.3)";
+      }
+    });
+
+    const footer = document.querySelector("footer");
+    if (footer) {
+      const year = new Date().getFullYear();
+      footer.innerHTML = `© ${year} Career Development Resource • University of Michigan School of Information`;
+    }
+  });
+</script>
+
 <body>
-  <!-- Skip link required by the assignment -->
   <a href="#main">Skip to Main Content</a>
 
   <header>
@@ -18,51 +40,82 @@
     <nav aria-label="Primary">
       <ul>
         <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="networking.html">Networking</a></li>
-        <li><a href="interviews.html">interviews</a></li>
+        <li><a href="resume.html" aria-current="page">Resume</a></li>
+        <li><a href="networking.html" aria-current="page">Networking</a></li>
+        <li><a href="interviews.html" aria-current="page">interviews</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
+    <h2>Welcome to UMSI Career Success Website</h2>
+    
     <figure>
       <img src="images/hero-home.jpg" alt="Students exploring career resources on a laptop" />
       <figcaption>Find curated resources to explore careers, prepare materials, and get ready for interviews.</figcaption>
     </figure>
-  <section>
-    <h2>Welcome to UMSI Career Success Website</h2>
-    <p>
-      Ready to take the next step toward your future career? The UMSI Career Development Resource Hub is your one-stop
-      shop for trusted guidance, practical tools, and the latest information to help you thrive as a student and
-      job-seeker.
-    </p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/GSjGeDYJ5Nk?si=qhxJPRTIT___x8hG"
-      title="YouTube video player" style="border:none;"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-    </iframe>
-  </section>
 
-  <section aria-labelledby="quick-start">
-      <h3 id="quick-start">Quick Start</h3>
-      <ol>
-        <li>Draft or update your resume (see <a href="resume.html">Resume</a>).</li>
-        <li>Identify 5-10 target companies and 5 people to contact (see <a href="networking.html">Networking</a>).</li>
-        <li>Practice behavioral and technical questions (see <a href="interviews.html">Interview Preparation</a>).</li>
-      </ol>
-  </section>
+    <div class="left-column">
+      <section>
+        <p>
+          Ready to take the next step toward your future career? The UMSI Career Development Resource Hub is your one-stop
+          shop for trusted guidance, practical tools, and the latest information to help you thrive as a student and
+          job-seeker.
+        </p>
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/GSjGeDYJ5Nk?si=qhxJPRTIT___x8hG"
+          title="YouTube video player" style="border:none;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </section>
 
-  <section aria-labelledby="featured-links">
-    <h3 id="featured-links">Featured External Resources</h3>
-    <ul>
-      <li><a href="https://www.onetonline.org/" target="_blank" rel="noopener">O*NET Online</a> - role descriptions and skills</li>
-      <li><a href="https://www.linkedin.com/learning/" target="_blank" rel="noopener">LinkedIn Learning</a> - short upskilling courses</li>
-      <li><a href="https://www.glassdoor.com/Interview/index.htm" target="_blank" rel="noopener">Glassdoor Interview Reviews</a></li>
-      <li><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a> - certificates to strengthen your profile</li>
-    </ul>
-  </section>
+      <section aria-labelledby="quick-start">
+        <h3 id="quick-start">Quick Start</h3>
+        <ol>
+          <li>Draft or update your resume (see <a href="resume.html">Resume</a>).</li>
+          <li>Identify 5-10 target companies and 5 people to contact (see <a href="networking.html">Networking</a>).</li>
+          <li>Practice behavioral and technical questions (see <a href="interviews.html">Interview Preparation</a>).</li>
+        </ol>
+      </section>
 
+      <section aria-labelledby="featured-links">
+        <h3 id="featured-links">Featured External Resources</h3>
+        <ul>
+          <li><a href="https://www.onetonline.org/" target="_blank" rel="noopener">O*NET Online</a> - role descriptions and skills</li>
+          <li><a href="https://www.linkedin.com/learning/" target="_blank" rel="noopener">LinkedIn Learning</a> - short upskilling courses</li>
+          <li><a href="https://www.glassdoor.com/Interview/index.htm" target="_blank" rel="noopener">Glassdoor Interview Reviews</a></li>
+          <li><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a> - certificates to strengthen your profile</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section aria-labelledby="suggested-structure">
+        <h3 id="suggested-structure">Suggested Structure</h3>
+        <ul>
+          <li>Header: Name, email, phone, LinkedIn/GitHub (as applicable).</li>
+          <li>Education: Degree, school, graduation date, relevant coursework.</li>
+          <li>Experience: Role, organization, location, dates, 3–5 impact bullets.</li>
+          <li>Projects: Links and results; show your contributions and outcomes.</li>
+          <li>Skills & Certifications: Group by category (e.g., Languages, Tools).</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="core-principles">
+        <h3 id="core-principles">Core Principles</h3>
+        <ul>
+          <li>One page for most students; clear headings and consistent formatting.</li>
+          <li>Action-oriented bullet points using strong verbs and measurable outcomes.</li>
+          <li>Prioritize the most relevant experiences for your target roles.</li>
+          <li>Include key skills, tools, and certifications recruiters search for.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="export">
+        <h3 id="export">Export</h3>
+        <p>Export to PDF with embedded fonts; name your file like Firstname_Lastname_Resume.pdf.</p>
+      </section>
+    </div>
 
   </main>
 
